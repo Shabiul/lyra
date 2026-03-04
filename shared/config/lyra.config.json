@@ -1,0 +1,55 @@
+{
+  "lyra": {
+    "name": "Lyra",
+    "personality_preset": "default",
+    "voice_id": "lyra_v1",
+    "language": "en"
+  },
+  "ollama": {
+    "host": "http://localhost:11434",
+    "model": "qwen2.5:32b",
+    "timeout": 120,
+    "options": {
+      "temperature": 0.85,
+      "top_p": 0.9,
+      "repeat_penalty": 1.1,
+      "num_ctx": 4096
+    }
+  },
+  "memory": {
+    "short_term_turns": 20,
+    "vector_db_path": "../../data/chroma",
+    "sqlite_path": "../../data/lyra_memory.db",
+    "embedding_model": "nomic-embed-text",
+    "max_recall_results": 5
+  },
+  "voice": {
+    "tts_model_path": "../../data/models/xtts_v2",
+    "whisper_model": "medium",
+    "device": "cuda",
+    "sample_rate": 24000,
+    "language": "en"
+  },
+  "vision": {
+    "webcam_index": 0,
+    "detection_backend": "mediapipe",
+    "capture_interval_seconds": 5,
+    "enabled": true
+  },
+  "services": {
+    "llm_core":      "http://localhost:8001",
+    "memory":        "http://localhost:8002",
+    "voice":         "http://localhost:8003",
+    "vision":        "http://localhost:8004",
+    "avatar_bridge": "ws://localhost:3001",
+    "api_gateway":   "http://localhost:3000"
+  },
+  "ports": {
+    "api_gateway":   3000,
+    "avatar_bridge": 3001,
+    "llm_core":      8001,
+    "memory":        8002,
+    "voice":         8003,
+    "vision":        8004
+  }
+}
